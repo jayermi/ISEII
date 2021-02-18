@@ -13,7 +13,7 @@ docker-build:
 
 docker-start:
 	@echo "starting the NEW service in container..."
-#	docker run  -p 8080:8080 tbalson/cpu
+	docker run  -p 8080:8080 tbalson/cpu
 
 service:
 	@echo "creating the service..."
