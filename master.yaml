@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: 1.0-oas3
+  version: 0.0-oas3
   title: cpuinfo
   description: >-
     A simple service to get cpuinfo as an example of using swagger-2.0
@@ -11,12 +11,27 @@ info:
   license:
     name: Apache
 paths:
-  /cpu:
+  /sum/{id}:
     get:
       tags:
-        - CPU
-      operationId: os_pack.cpu_2020.get_processor_name
+        - SUM
+      operationId: prediction.my_prediction
       description: Returns cpu information of the hosting server
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: array
+            items:
+              type: number
+            minItems: 1
+          style: simple
+          explode: true
+        - in: query
+          name: metadata
+          schema:
+            type: boolean
       responses:
         '200':
           description: 'CPU info, or add more text'
@@ -29,6 +44,13 @@ servers:
 components:
   schemas:
     CPU:
+      type: object
+      required:
+        - model
+      properties:
+        model:
+          type: string
+    OS:
       type: object
       required:
         - model
