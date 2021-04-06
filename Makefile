@@ -1,10 +1,14 @@
 DESTDIR=server
+current_dir=$(shell pwd)
 
 all: start
 	@echo "Done"
 
 docker-all: docker-build docker-start
 	@echo "DONE"
+
+docker-alli: docker-build docker-inter
+	@echo "Done"
 
 docker-build:
 	@echo "building the image from docker file..."
@@ -13,11 +17,11 @@ docker-build:
 
 docker-start:
 	@echo "starting the NEW service in container..."
-	docker run  -p 8080:8080 predict_demo
-	
+	docker run  -p 8080:8080 -v predict_demo
+
 docker-inter:
 	@echo "starting the NEW service in container interactively..."
-	docker run  -p 8080:8080 -it predict_demo
+	docker run  -p 8080:8080 -v $$(pwd):/my_prediction/ -it predict_demo
 
 service:
 	@echo "creating the service..."
@@ -46,3 +50,5 @@ docker-clean: docker-stop docker-remove
 clean:
 	@echo "removing service files created"
 	rm -rf $(CREATED)
+
+
