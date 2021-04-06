@@ -6,7 +6,7 @@ import json
 #load the model
 
 my_model = load('svc_model.pkl')
-class_names = Nx.target_names
+#class_names = Nx.target_names
 
 def my_prediction(id):
     dummy = np.array(id)
