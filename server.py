@@ -2,10 +2,11 @@ from flask import Flask
 from flask import jsonify
 import connexion
 from joblib import load
+#import pickle
 
 #load the model
-
-my_model = load('lin_model.pkl')
+#pickle.load(model)
+#my_model = load('lin_model.pkl')
 
 # Create the application instance
 app = connexion.App(__name__, specification_dir="./")
