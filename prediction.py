@@ -17,8 +17,10 @@ def my_prediction(id):
   dummy = np.array(id)
   dummyT = dummy.reshape(1,-1)
   prediction = my_model.predict(dummyT)
-  name = class_names[prediction]
-  name = name.tolist()
+  pred_int = int(prediction)
+  pred_str = json.dumps(pred_int)
+  name = class_names[pred_int]
+  #name = name.tolist()
   name_str = json.dumps(name)
-  str = [name_str]
+  str = ["The predicted draft round is: " ,name_str, "The prediction value before conversion is: ", pred_str  ]
   return str
